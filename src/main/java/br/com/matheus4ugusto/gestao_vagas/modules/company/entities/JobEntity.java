@@ -1,5 +1,6 @@
 package br.com.matheus4ugusto.gestao_vagas.modules.company.entities;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -21,10 +22,13 @@ public class JobEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+    @Schema(example = "vaga para design", requiredMode = Schema.RequiredMode.REQUIRED)
     private String description;
+    @Schema(example = "Gym pass, Plano de saúde", requiredMode = Schema.RequiredMode.REQUIRED)
     private String benefits;
 
     @NotBlank(message = "Esse campo é obrigatório")
+    @Schema(example = "Sênior", requiredMode = Schema.RequiredMode.REQUIRED)
     private String level;
 
     @ManyToOne()
